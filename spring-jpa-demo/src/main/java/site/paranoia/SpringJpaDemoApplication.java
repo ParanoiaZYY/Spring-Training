@@ -13,11 +13,10 @@ public class SpringJpaDemoApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringJpaDemoApplication.class, args);
-
     }
 
     void insertUser() {
-        userService.addUser();
+        userService.findByUserName();
     }
 
     @Override

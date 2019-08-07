@@ -14,11 +14,14 @@ public class UserService {
     public void addUser() {
         SUser sUser = new SUser();
         sUser.setId(null);
-        sUser.setName("12333");
+        sUser.setUserName("12333");
         userRepository.save(sUser);
     }
 
     public void selectUserList() {
         userRepository.findAll().forEach(item -> log.info(item.toString()));
+    }
+
+    public void findByUserName() {
     }
 }
