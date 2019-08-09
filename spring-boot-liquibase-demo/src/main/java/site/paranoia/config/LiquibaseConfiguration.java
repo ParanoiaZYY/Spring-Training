@@ -24,17 +24,42 @@ public class LiquibaseConfiguration {
     }
 
     @Bean
-    public SpringLiquibase liquibase(@Qualifier("taskExecutor") Executor executor,
+    public SpringLiquibase liquibaseForBusiness(
                                      DataSource dataSource, LiquibaseProperties liquibaseProperties) {
 
         // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSource);
-        liquibase.setChangeLog("classpath:config/liquibase/master.xml");
+        liquibase.setChangeLog("classpath:config/liquibase/business/master.xml");
         liquibase.setContexts(liquibaseProperties.getContexts());
         liquibase.setDefaultSchema(liquibaseProperties.getDefaultSchema());
         liquibase.setDropFirst(liquibaseProperties.isDropFirst());
         liquibase.setChangeLogParameters(liquibaseProperties.getParameters());
+        liquibase.setDatabaseChangeLogTable("changelog_table_business");
+        liquibase.setDatabaseChangeLogLockTable("changelog_lock_table_business");
+        if (env.acceptsProfiles("no-liquibase")) {
+            liquibase.setShouldRun(false);
+        } else {
+            liquibase.setShouldRun(liquibaseProperties.isEnabled());
+            log.debug("Configuring Liquibase");
+        }
+        return liquibase;
+    }
+
+    @Bean
+    public SpringLiquibase liquibaseForFinancial(
+                                     DataSource dataSource, LiquibaseProperties liquibaseProperties) {
+
+        // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setDataSource(dataSource);
+        liquibase.setChangeLog("classpath:config/liquibase/financial/master.xml");
+        liquibase.setContexts(liquibaseProperties.getContexts());
+        liquibase.setDefaultSchema(liquibaseProperties.getDefaultSchema());
+        liquibase.setDropFirst(liquibaseProperties.isDropFirst());
+        liquibase.setChangeLogParameters(liquibaseProperties.getParameters());
+        liquibase.setDatabaseChangeLogTable("changelog_table_fin");
+        liquibase.setDatabaseChangeLogLockTable("changelog_lock_table_fin");
         if (env.acceptsProfiles("no-liquibase")) {
             liquibase.setShouldRun(false);
         } else {

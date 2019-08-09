@@ -37,3 +37,6 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+
+  liquibase:
+    enabled: false
