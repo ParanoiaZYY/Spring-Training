@@ -38,6 +38,8 @@ spring:
           config:
             multi-statement-allow: true
       aop-patterns: site.paranoia.service.*.*
+  liquibase:
+    enabled: false
 
 mybatis:
   type-aliases-package: site.paranoia.domain
