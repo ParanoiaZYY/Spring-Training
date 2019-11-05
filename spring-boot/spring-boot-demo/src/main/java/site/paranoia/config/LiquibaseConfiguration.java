@@ -66,4 +66,27 @@ public class LiquibaseConfiguration {
         }
         return liquibase;
     }
+
+    @Bean
+    public SpringLiquibase liquibaseForUser(
+            DataSource dataSource, LiquibaseProperties liquibaseProperties) {
+
+        // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setDataSource(dataSource);
+        liquibase.setChangeLog("classpath:config/liquibase/user/master.xml");
+        liquibase.setContexts(liquibaseProperties.getContexts());
+        liquibase.setDefaultSchema(liquibaseProperties.getDefaultSchema());
+        liquibase.setDropFirst(liquibaseProperties.isDropFirst());
+        liquibase.setChangeLogParameters(liquibaseProperties.getParameters());
+        liquibase.setDatabaseChangeLogTable("changelog_table_user");
+        liquibase.setDatabaseChangeLogLockTable("changelog_lock_table_user");
+        if (env.acceptsProfiles("no-liquibase")) {
+            liquibase.setShouldRun(false);
+        } else {
+            liquibase.setShouldRun(liquibaseProperties.isEnabled());
+            log.debug("Configuring Liquibase");
+        }
+        return liquibase;
+    }
 }

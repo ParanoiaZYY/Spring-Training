@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>site.paranoia</groupId>
-    <artifactId>spring-jpa-demo</artifactId>
+    <artifactId>spring-boot-jpa-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-jpa-demo</name>
+    <name>spring-boot-jpa-demo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
