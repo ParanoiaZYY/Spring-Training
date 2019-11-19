@@ -55,6 +55,8 @@ dependencies {
 
     // cloud alibaba
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+    implementation 'site.paranoia:dubbo-api:1.0-SNAPSHOT'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
 }
 
 dependencyManagement {

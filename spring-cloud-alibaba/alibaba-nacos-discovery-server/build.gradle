@@ -13,6 +13,7 @@ sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+    mavenLocal()
     maven { url 'https://repo.spring.io/milestone' }
 }
 
@@ -48,13 +49,14 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-
     // cloud
     implementation 'org.springframework.cloud:spring-cloud-starter'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     // cloud alibaba
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
+    compile 'site.paranoia:dubbo-api:1.0-SNAPSHOT'
 }
 
 dependencyManagement {
