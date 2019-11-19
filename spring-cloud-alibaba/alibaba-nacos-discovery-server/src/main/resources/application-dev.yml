@@ -40,6 +40,12 @@ spring:
       aop-patterns: site.paranoia.service.*.*
   liquibase:
     enabled: false
+  application:
+    name: alibaba-nacos-discovery-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
 mybatis:
   type-aliases-package: site.paranoia.domain
@@ -57,4 +63,6 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
+server:
+  port: 8881
 
