@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-  <info organisation="site.paranoia" module="dubbo-api" revision="1.0-SNAPSHOT" status="integration" publication="20191119184749"/>
+  <info organisation="site.paranoia" module="dubbo-api" revision="1.4-SNAPSHOT" status="integration" publication="20200518115436"/>
   <configurations>
     <conf name="annotationProcessor" visibility="private"/>
     <conf name="apiElements" visibility="private" extends="runtime"/>
@@ -26,4 +26,8 @@
   <publications>
     <artifact name="dubbo-api" type="jar" ext="jar" conf="apiElements,archives,runtime,runtimeElements"/>
   </publications>
+  <dependencies>
+    <dependency org="org.projectlombok" name="lombok" rev="1.18.8" conf="annotationProcessor-&gt;default"/>
+    <dependency org="org.projectlombok" name="lombok" rev="1.18.8" conf="compileOnly-&gt;default"/>
+  </dependencies>
 </ivy-module>

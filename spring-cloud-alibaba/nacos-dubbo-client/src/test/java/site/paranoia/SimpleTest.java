@@ -30,9 +30,9 @@ public class SimpleTest {
     @Test
     public void addUser() {
         User user = new User();
-        user.setName("wqd1994");
-        user.setEmail("wqd_1994@163.com");
-        user.setAge(22);
+//        user.setName("wqd1994");
+//        user.setEmail("wqd_1994@163.com");
+//        user.setAge(22);
         userMapper.insert(user);
         System.out.println(user.getId());
     }
@@ -48,7 +48,7 @@ public class SimpleTest {
     public void updateByPrimaryKeySelective() {
         User user = new User();
         user.setId(10);
-        user.setName("2921212");
+//        user.setName("2921212");
         int result = userMapper.updateByPrimaryKeySelective(user);
         System.out.println(result);
     }
@@ -57,7 +57,7 @@ public class SimpleTest {
     public void update() {
         User user = new User();
         user.setId(10);
-        user.setName("2921212");
+//        user.setName("2921212");
         int result = userMapper.updateByPrimaryKeySelective(user);
         System.out.println(result);
     }

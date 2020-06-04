@@ -1,46 +1,53 @@
 package site.paranoia.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Date;
+
+@Table(name = "s_user")
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private Integer age;
-    private String email;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(name = "user_name")
+    private String userName;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "password")
+    private String passWord;
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "real_name")
+    private String realName;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * 创建人
+     */
+    @Column(name = "created_by")
+    private Integer createdBy;
 
-    public Integer getAge() {
-        return age;
-    }
+    /**
+     * 创建时间
+     */
+    @Column(name = "created_time")
+    private Date createdTime;
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    /**
+     * 最后修改人
+     */
+    @Column(name = "last_modified_by")
+    private Integer lastModifiedBy;
 
-    public String getEmail() {
-        return email;
-    }
+    /**
+     * 最后修改时间
+     */
+    @Column(name = "last_modified_time")
+    private Date lastModifiedTime;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    /**
+     * 逻辑删除标记
+     */
+    @Column(name = "delete_flag")
+    private Integer deleteFlag;
 }

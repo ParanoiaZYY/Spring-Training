@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'site.paranoia'
-version '1.0-SNAPSHOT'
+version '1.4-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -30,4 +30,7 @@ uploadArchives {
     }
 }
 
-dependencies {}
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+}

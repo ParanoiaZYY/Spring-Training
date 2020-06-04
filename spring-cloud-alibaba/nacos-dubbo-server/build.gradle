@@ -36,7 +36,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
-    compile 'com.alibaba:druid-spring-boot-starter:1.1.17'
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.22'
     compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'mysql:mysql-connector-java:5.1.38'
     compileOnly 'org.projectlombok:lombok:1.18.8'
@@ -56,7 +56,7 @@ dependencies {
     // cloud alibaba
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
     implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
-    compile 'site.paranoia:dubbo-api:1.0-SNAPSHOT'
+    compile 'site.paranoia:dubbo-api:1.4-SNAPSHOT'
 }
 
 dependencyManagement {

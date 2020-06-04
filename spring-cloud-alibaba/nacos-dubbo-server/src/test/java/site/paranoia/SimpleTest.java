@@ -10,10 +10,11 @@ import site.paranoia.domain.User;
 import site.paranoia.mapper.UserMapper;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = SpringBootGradleStarterApplication.class)
 public class SimpleTest {
 
     @Autowired
@@ -30,9 +31,14 @@ public class SimpleTest {
     @Test
     public void addUser() {
         User user = new User();
-        user.setName("wqd1994");
-        user.setEmail("wqd_1994@163.com");
-        user.setAge(22);
+        user.setUserName("wqd1994");
+        user.setRealName("王权道");
+        user.setPassWord("123456");
+        user.setCreatedBy(1);
+        user.setCreatedTime(new Date());
+        user.setLastModifiedBy(1);
+        user.setLastModifiedTime(new Date());
+        user.setDeleteFlag(0);
         userMapper.insert(user);
         System.out.println(user.getId());
     }
@@ -48,7 +54,6 @@ public class SimpleTest {
     public void updateByPrimaryKeySelective() {
         User user = new User();
         user.setId(10);
-        user.setName("2921212");
         int result = userMapper.updateByPrimaryKeySelective(user);
         System.out.println(result);
     }
@@ -57,7 +62,6 @@ public class SimpleTest {
     public void update() {
         User user = new User();
         user.setId(10);
-        user.setName("2921212");
         int result = userMapper.updateByPrimaryKeySelective(user);
         System.out.println(result);
     }
