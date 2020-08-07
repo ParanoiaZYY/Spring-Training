@@ -2,57 +2,32 @@ mysql:
   host: 192.168.102.136
   port: 32768
 
+
 spring:
   datasource:
-    druid:
-      name: default
-      url: jdbc:mysql://${mysql.host}:${mysql.port}/paranoia-test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
-      username: root
-      password: root
-      type: com.alibaba.druid.pool.DruidDataSource
-      driver-class-name: com.mysql.jdbc.Driver
-      filters: stat
-      maxActive: 20
-      initialSize: 1
-      maxWait: 60000
-      minIdle: 1
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: select 'x'
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      maxOpenPreparedStatements: 20
-      stat-view-servlet:
-        enabled: true
-        url-pattern: /druid/*
-        login-username: admin
-        login-password: admin
-      filter:
-        stat:
-          log-slow-sql: true
-          slow-sql-millis: 1000
-          merge-sql: true
-        wall:
-          config:
-            multi-statement-allow: true
-      aop-patterns: site.paranoia.service.*.*
+    dynamic:
+      datasource:
+        master:
+          url: jdbc:mysql://${mysql.host}:${mysql.port}/paranoia-test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+          username: root
+          password: root
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.jdbc.Driver
 
-mybatis:
-  type-aliases-package: site.paranoia.domain
-  mapper-locations: classpath:mapper/*.xml
-
-mapper:
-  mappers:
-    - site.paranoia.utils.MyMapper
-  not-empty: false
-  identity: MYSQL
-
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
+#mybatis:
+#  type-aliases-package: site.paranoia.domain
+#  mapper-locations: classpath:mapper/*.xml
+#
+#mapper:
+#  mappers:
+#    - site.paranoia.utils.MyMapper
+#  not-empty: false
+#  identity: MYSQL
+#
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
 
 

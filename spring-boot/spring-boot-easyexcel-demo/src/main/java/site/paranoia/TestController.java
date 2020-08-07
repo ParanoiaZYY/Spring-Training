@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @PostMapping
-    public void test(@RequestBody Test test) {
-        Test test1 = new Test();
-        test1.setCode();
+    public void test(@RequestBody ExcelData test) {
     }
 }

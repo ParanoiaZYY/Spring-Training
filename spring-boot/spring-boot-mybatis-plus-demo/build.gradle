@@ -23,7 +23,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     compile 'com.alibaba:druid-spring-boot-starter:1.1.17'
-    compile 'org.springframework.boot:spring-boot-starter-jdbc'
+//    compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'mysql:mysql-connector-java:5.1.38'
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
@@ -33,5 +33,6 @@ dependencies {
 //    compile 'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.12'
 
     compile 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+    compile group: 'com.baomidou', name: 'dynamic-datasource-spring-boot-starter', version: '3.1.1'
 }
 
