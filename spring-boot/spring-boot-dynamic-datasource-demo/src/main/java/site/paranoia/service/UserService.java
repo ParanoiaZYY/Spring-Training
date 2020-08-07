@@ -1,21 +1,22 @@
 package site.paranoia.service;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import site.paranoia.domain.DatabaseConfig;
 import site.paranoia.domain.User;
 import site.paranoia.mapper.UserMapper;
-
 import java.util.List;
 
-@DS("master")
+@Service
+@AllArgsConstructor
 public class UserService {
 
-    @Autowired
     UserMapper userMapper;
 
-    public void addUser() {
-        User user = new User();
-        user.setName("21121212");
+    @DS("#databaseConfig.name")
+    public void addUser(DatabaseConfig databaseConfig, User user) {
+        userMapper.insert(user);
     }
 
     public List<User> selectAll() {

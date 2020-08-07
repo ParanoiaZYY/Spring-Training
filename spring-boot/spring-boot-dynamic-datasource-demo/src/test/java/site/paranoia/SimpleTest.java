@@ -1,63 +1,83 @@
 package site.paranoia;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import site.paranoia.domain.DatabaseConfig;
 import site.paranoia.domain.User;
-import site.paranoia.mapper.UserMapper;
+import site.paranoia.service.DatabaseConfigService;
+import site.paranoia.service.UserService;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SimpleTest {
 
     @Autowired
-    UserMapper userMapper;
+    UserService userService;
+
+    @Autowired
+    DatabaseConfigService databaseConfigService;
 
     @Test
     public void testSelect() {
         System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectAll();
+        List<User> userList = userService.selectAll();
         userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void testSelectAllDatabase() {
+        System.out.println(("----- selectAll method test ------"));
+        List<DatabaseConfig> databaseConfigs = databaseConfigService.selectAll();
+        databaseConfigs.forEach(System.out::println);
+    }
+
+    @Test
+    public void insertUserOnSlave1Test() {
+        List<DatabaseConfig> databaseConfigs = databaseConfigService.selectAll();
+        databaseConfigs.forEach(System.out::println);
+
+        Set<String> set = databaseConfigService.addDruid(databaseConfigs.get(0));
+        System.out.println(set);
+    }
+
+    @Test
+    public void getCurrentDataSources() {
+        Set<String> set = databaseConfigService.getCurrentDataSources();
+        System.out.println(set);
     }
 
     @Test
     public void addUser() {
         User user = new User();
-        user.setName("wqd1994");
-        user.setEmail("wqd_1994@163.com");
-        user.setAge(22);
-        userMapper.insert(user);
-        System.out.println(user.getId());
-    }
+        user.setName("AAAAAAAA");
+        user.setAge(26);
+        user.setEmail("wqd_1994");
+        user.setPassword("wqd_1994");
+        user.setUrl("wqd_1994");
 
-    @Test
-    public void deleteUser() {
-        User user = new User();
-        int result = userMapper.delete(user);
-        System.out.println(result);
-    }
+        List<DatabaseConfig> databaseConfigs = databaseConfigService.selectAll();
+        databaseConfigs.forEach(System.out::println);
+        DatabaseConfig databaseConfig = databaseConfigs.get(0);
+        databaseConfigService.addDruid(databaseConfig);
+        userService.addUser(databaseConfig, user);
+        databaseConfigService.remove(databaseConfig.getName());
 
-    @Test
-    public void updateByPrimaryKeySelective() {
-        User user = new User();
-        user.setId(10);
-        user.setName("2921212");
-        int result = userMapper.updateByPrimaryKeySelective(user);
-        System.out.println(result);
-    }
+        User user2 = new User();
+        user2.setName("BBBBBB");
+        user2.setAge(26);
+        user2.setEmail("wqd_1994");
+        user2.setPassword("wqd_1994");
+        user2.setUrl("wqd_1994");
+        databaseConfig = databaseConfigs.get(1);
+        databaseConfigService.addDruid(databaseConfig);
+        userService.addUser(databaseConfig, user2);
+        databaseConfigService.remove(databaseConfig.getName());
 
-    @Test
-    public void update() {
-        User user = new User();
-        user.setId(10);
-        user.setName("2921212");
-        int result = userMapper.updateByPrimaryKeySelective(user);
-        System.out.println(result);
     }
 }
