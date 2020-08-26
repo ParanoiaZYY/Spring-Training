@@ -56,31 +56,31 @@ dependencies {
 project.ext.diffChangelogFile = 'src/main/resources/config/liquibase/changelog/' + new Date().format('yyyyMMddHHmmss') + '_changelog.xml'
 project.ext.generateSql = 'src/main/resources/config/liquibase/sql/' + new Date().format('yyyyMMddHHmmss') + '_update.sql'
 
-//liquibase {
-//    activities {
-//        dev {
-//            changeLogFile "src/main/resources/config/liquibase/master.xml"
-//            url "jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
-//            username "root"
-//            password "root"
-//        }
-//        test {
-//            changeLogFile "src/main/resources/db/changeLog/changelog.xml"
-//            url "jdbc:postgresql://localhost:5432/liquibase-test"
-//            username "postgres"
-//            password "jmn123456"
-//        }
-//        diffLog {
-//            driver ''
-//            url "jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
-//            username "mtuser"
-//            password "mtuser"
-//            changeLogFile project.ext.diffChangelogFile
-//            defaultSchemaName ''
-//            logLevel 'debug'
-//            classpath 'src/main/resources/config/liquibase'
-//        }
-//    }
-//    runList = System.getProperty("runList") ?: 'dev'
-//}
+liquibase {
+    activities {
+        dev {
+            changeLogFile "src/main/resources/config/liquibase/master.xml"
+            url "jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+            username "root"
+            password "root"
+        }
+        test {
+            changeLogFile "src/main/resources/db/changeLog/changelog.xml"
+            url "jdbc:postgresql://localhost:5432/liquibase-test"
+            username "postgres"
+            password "jmn123456"
+        }
+        diffLog {
+            driver ''
+            url "jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+            username "mtuser"
+            password "mtuser"
+            changeLogFile project.ext.diffChangelogFile
+            defaultSchemaName ''
+            logLevel 'debug'
+            classpath 'src/main/resources/config/liquibase'
+        }
+    }
+    runList = System.getProperty("runList") ?: 'dev'
+}
 

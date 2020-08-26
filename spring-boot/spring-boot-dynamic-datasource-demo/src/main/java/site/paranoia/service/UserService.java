@@ -11,11 +11,11 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@DS("#session.dataName")
 public class UserService {
 
     UserMapper userMapper;
 
-    @DS("#databaseConfig.name")
     public void addUser(DatabaseConfig databaseConfig, User user) {
         userMapper.insert(user);
     }
