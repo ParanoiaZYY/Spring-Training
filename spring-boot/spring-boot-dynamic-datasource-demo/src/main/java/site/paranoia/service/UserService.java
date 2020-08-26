@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import site.paranoia.domain.DatabaseConfig;
 import site.paranoia.domain.User;
 import site.paranoia.mapper.UserMapper;
+
 import java.util.List;
 
 @Service

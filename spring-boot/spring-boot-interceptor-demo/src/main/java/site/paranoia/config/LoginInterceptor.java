@@ -1,7 +1,8 @@
-public class LoginInterceptor extends HandlerInterceptorAdapter{
+public class LoginInterceptor extends HandlerInterceptorAdapter {
     /**
      * 在请求处理之前进行调用（Controller方法调用之前）
      * 基于URL实现的拦截器
+     *
      * @param request
      * @param response
      * @param handler

@@ -11,6 +11,7 @@ import site.paranoia.domain.DatabaseConfig;
 import site.paranoia.mapper.DataBaseConfigMapper;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class DatabaseConfigService {
         return dataBaseConfigMapper.selectAll();
     }
 
-    public Set<String> addDruid(DatabaseConfig databaseConfig) {
+    public Set<String> addDruid(DatabaseConfig databaseConfig) throws SQLException {
         DataSourceProperty dataSourceProperty = new DataSourceProperty();
         dataSourceProperty.setPoolName(databaseConfig.getName());
         dataSourceProperty.setUrl(databaseConfig.getUrl());
@@ -40,6 +41,7 @@ public class DatabaseConfigService {
         dataSourceProperty.setDriverClassName(databaseConfig.getDriveName());
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
         DataSource dataSource = druidDataSourceCreator.createDataSource(dataSourceProperty);
+        System.out.println(dataSource.getConnection().toString());
         ds.addDataSource(databaseConfig.getName(), dataSource);
         return ds.getCurrentDataSources().keySet();
     }

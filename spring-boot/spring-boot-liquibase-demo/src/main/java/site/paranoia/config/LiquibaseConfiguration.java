@@ -25,7 +25,7 @@ public class LiquibaseConfiguration {
 
     @Bean
     public SpringLiquibase liquibaseForBusiness(
-                                     DataSource dataSource, LiquibaseProperties liquibaseProperties) {
+            DataSource dataSource, LiquibaseProperties liquibaseProperties) {
 
         // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
         SpringLiquibase liquibase = new SpringLiquibase();
@@ -48,7 +48,7 @@ public class LiquibaseConfiguration {
 
     @Bean
     public SpringLiquibase liquibaseForFinancial(
-                                     DataSource dataSource, LiquibaseProperties liquibaseProperties) {
+            DataSource dataSource, LiquibaseProperties liquibaseProperties) {
 
         // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
         SpringLiquibase liquibase = new SpringLiquibase();

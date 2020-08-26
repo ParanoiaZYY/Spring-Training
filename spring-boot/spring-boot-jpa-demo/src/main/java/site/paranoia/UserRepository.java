@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import site.paranoia.domain.SUser;
 
 @Repository
-public interface UserRepository extends JpaRepository<SUser,Integer> {
+public interface UserRepository extends JpaRepository<SUser, Integer> {
 }

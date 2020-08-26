@@ -39,4 +39,4 @@ spring:
             multi-statement-allow: true
 
   liquibase:
-      enabled: false
+    enabled: false

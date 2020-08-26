@@ -1,4 +1,4 @@
 package site.paranoia;
 
-public class RollbackException extends Exception{
+public class RollbackException extends Exception {
 }

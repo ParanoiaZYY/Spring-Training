@@ -10,6 +10,7 @@ import site.paranoia.domain.User;
 import site.paranoia.service.DatabaseConfigService;
 import site.paranoia.service.UserService;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
@@ -38,7 +39,7 @@ public class SimpleTest {
     }
 
     @Test
-    public void insertUserOnSlave1Test() {
+    public void insertUserOnSlave1Test() throws SQLException {
         List<DatabaseConfig> databaseConfigs = databaseConfigService.selectAll();
         databaseConfigs.forEach(System.out::println);
 
@@ -53,7 +54,7 @@ public class SimpleTest {
     }
 
     @Test
-    public void addUser() {
+    public void addUser() throws SQLException {
         User user = new User();
         user.setName("AAAAAAAA");
         user.setAge(26);
@@ -62,7 +63,6 @@ public class SimpleTest {
         user.setUrl("wqd_1994");
 
         List<DatabaseConfig> databaseConfigs = databaseConfigService.selectAll();
-        databaseConfigs.forEach(System.out::println);
         DatabaseConfig databaseConfig = databaseConfigs.get(0);
         databaseConfigService.addDruid(databaseConfig);
         userService.addUser(databaseConfig, user);

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.paranoia.mapper.fin.FinChargeMapper">
+  <resultMap id="BaseResultMap" type="site.paranoia.domain.fin.FinCharge">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="forder_id" jdbcType="VARCHAR" property="forderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="delegation_customer_code" jdbcType="INTEGER" property="delegationCustomerCode" />
+    <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+    <result column="business_attr" jdbcType="VARCHAR" property="businessAttr" />
+    <result column="invoice_type" jdbcType="VARCHAR" property="invoiceType" />
+    <result column="canvasser" jdbcType="VARCHAR" property="canvasser" />
+    <result column="canvasser_name" jdbcType="VARCHAR" property="canvasserName" />
+    <result column="business_name" jdbcType="VARCHAR" property="businessName" />
+    <result column="reviewer_name" jdbcType="VARCHAR" property="reviewerName" />
+    <result column="reviewer" jdbcType="VARCHAR" property="reviewer" />
+    <result column="business_id" jdbcType="VARCHAR" property="businessId" />
+    <result column="settlement_method" jdbcType="VARCHAR" property="settlementMethod" />
+    <result column="write_off_flag" jdbcType="VARCHAR" property="writeOffFlag" />
+    <result column="write_off_charge_id" jdbcType="VARCHAR" property="writeOffChargeId" />
+    <result column="audit_process_id" jdbcType="VARCHAR" property="auditProcessId" />
+    <result column="audit_progress" jdbcType="INTEGER" property="auditProgress" />
+    <result column="audit_error_id" jdbcType="VARCHAR" property="auditErrorId" />
+    <result column="charge_swap_id" jdbcType="VARCHAR" property="chargeSwapId" />
+    <result column="bank_transfer_id" jdbcType="VARCHAR" property="bankTransferId" />
+    <result column="bank_transfer_date" jdbcType="TIMESTAMP" property="bankTransferDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="account_period" jdbcType="BIGINT" property="accountPeriod" />
+    <result column="order_flag" jdbcType="INTEGER" property="orderFlag" />
+    <result column="originator" jdbcType="INTEGER" property="originator" />
+    <result column="dept" jdbcType="INTEGER" property="dept" />
+    <result column="assist_department" jdbcType="INTEGER" property="assistDepartment" />
+    <result column="assist_department_name" jdbcType="VARCHAR" property="assistDepartmentName" />
+    <result column="canvasser_type" jdbcType="INTEGER" property="canvasserType" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="amend" jdbcType="INTEGER" property="amend" />
+    <result column="dollar_receivable" jdbcType="DECIMAL" property="dollarReceivable" />
+    <result column="dollar_receipt" jdbcType="DECIMAL" property="dollarReceipt" />
+    <result column="dollar_payable" jdbcType="DECIMAL" property="dollarPayable" />
+    <result column="dollar_paid" jdbcType="DECIMAL" property="dollarPaid" />
+    <result column="yuan_receivable" jdbcType="DECIMAL" property="yuanReceivable" />
+    <result column="yuan_receipt" jdbcType="DECIMAL" property="yuanReceipt" />
+    <result column="yuan_payable" jdbcType="DECIMAL" property="yuanPayable" />
+    <result column="yuan_paid" jdbcType="DECIMAL" property="yuanPaid" />
+    <result column="standard_money_receivable" jdbcType="DECIMAL" property="standardMoneyReceivable" />
+    <result column="standard_money_receipt" jdbcType="DECIMAL" property="standardMoneyReceipt" />
+    <result column="standard_money_payable" jdbcType="DECIMAL" property="standardMoneyPayable" />
+    <result column="standard_money_paid" jdbcType="DECIMAL" property="standardMoneyPaid" />
+    <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="last_modified_by" jdbcType="INTEGER" property="lastModifiedBy" />
+    <result column="last_modified_time" jdbcType="TIMESTAMP" property="lastModifiedTime" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, forder_id, order_no, delegation_customer_code, business_type, business_attr, 
+    invoice_type, canvasser, canvasser_name, business_name, reviewer_name, reviewer, 
+    business_id, settlement_method, write_off_flag, write_off_charge_id, audit_process_id, 
+    audit_progress, audit_error_id, charge_swap_id, bank_transfer_id, bank_transfer_date, 
+    remark, account_period, order_flag, originator, dept, assist_department, assist_department_name, 
+    canvasser_type, dept_name, amend, dollar_receivable, dollar_receipt, dollar_payable, 
+    dollar_paid, yuan_receivable, yuan_receipt, yuan_payable, yuan_paid, standard_money_receivable, 
+    standard_money_receipt, standard_money_payable, standard_money_paid, created_by, 
+    created_time, last_modified_by, last_modified_time, delete_flag, version
+  </sql>
+  <select id="selectPage" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from fin_charge
+     where 1=1
+    <if test="map.searchKey != null and map.searchKey != ''">
+      and 1=1
+    </if>
+    <if test="map.startTime != null">
+      and created_time &gt;= #{startTime,jdbcType=BIGINT}
+    </if>
+    <if test="map.endTime != null">
+      and created_time &lt;= #{endTime,jdbcType=BIGINT}
+    </if>
+    order by last_modified_time desc
+  </select>
+</mapper>
