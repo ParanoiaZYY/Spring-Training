@@ -1,4 +1,4 @@
-package site.paranoia.controller.fin;
+package site.paranoia.module.fin.controller;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import java.util.List;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.web.bind.annotation.*;
 
-import site.paranoia.domain.fin.dto.FinChargeDTO;
-import site.paranoia.service.fin.FinChargeService;
+import site.paranoia.module.fin.domain.dto.FinChargeDTO;
+import site.paranoia.module.fin.service.FinChargeService;
 import site.paranoia.utils.GridPageRequest;
 import site.paranoia.utils.Result;
 

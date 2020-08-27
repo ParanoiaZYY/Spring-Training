@@ -37,7 +37,7 @@ spring:
         wall:
           config:
             multi-statement-allow: true
-      aop-patterns: site.paranoia.service.*.*
+      aop-patterns: site.paranoia.module.fin.service.*.*
 server:
   port: 8088
 

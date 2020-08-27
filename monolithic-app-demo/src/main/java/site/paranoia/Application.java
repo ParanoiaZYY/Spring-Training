@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @SpringBootApplication
-@MapperScan("com.wisdom.mapper")
+@MapperScan("site.paranoia.module.**.mapper")
 @EnableConfigurationProperties({ LiquibaseProperties.class })
 public class Application {
 

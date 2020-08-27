@@ -1,4 +1,4 @@
-package site.paranoia.domain.fin;
+package site.paranoia.module.fin.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,7 +17,7 @@ public class FinCharge {
     /**
      * 账单号billdh
      */
-    @TableField(value = "forderId")
+    @TableField(value = "forder_id")
     private String forderId;
 
     /**
@@ -52,20 +52,20 @@ public class FinCharge {
     /**
      * 账单归属人
      */
-    @TableField(value = "canvasser_value")
-    private String canvasservalue;
+    @TableField(value = "canvasser_name")
+    private String canvasserName;
 
     /**
      * 商务人
      */
-    @TableField(value = "business_value")
-    private String businessvalue;
+    @TableField(value = "business_name")
+    private String businessName;
 
     /**
      * 复核人
      */
-    @TableField(value = "reviewer_value")
-    private String reviewervalue;
+    @TableField(value = "reviewer_name")
+    private String reviewerName;
 
     /**
      * 复核人
@@ -165,20 +165,14 @@ public class FinCharge {
     /**
      * 辅助部门名称
      */
-    @TableField(value = "assist_department_value")
-    private String assistDepartmentvalue;
+    @TableField(value = "assist_department_name")
+    private String assistDepartmentName;
 
     /**
      * 揽货类型
      */
     @TableField(value = "canvasser_type")
     private Integer canvasserType;
-
-    /**
-     * 所属部门名
-     */
-    @TableField(value = "dept_value")
-    private String deptvalue;
 
     /**
      * amend账单

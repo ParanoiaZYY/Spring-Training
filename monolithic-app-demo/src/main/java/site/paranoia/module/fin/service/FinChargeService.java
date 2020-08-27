@@ -1,13 +1,12 @@
-package site.paranoia.service.fin;
+package site.paranoia.module.fin.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import site.paranoia.controller.mapstruct.fin.FinChargeMapStruct;
-import site.paranoia.domain.fin.FinCharge;
-import site.paranoia.domain.fin.dto.FinChargeDTO;
-import site.paranoia.mapper.fin.FinChargeMapper;
+import site.paranoia.module.fin.mapstruct.FinChargeMapStruct;
+import site.paranoia.module.fin.domain.FinCharge;
+import site.paranoia.module.fin.domain.dto.FinChargeDTO;
+import site.paranoia.module.fin.mapper.FinChargeMapper;
 import site.paranoia.security.SecurityUtils;
-import com.wisdom.utils.*;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -188,7 +187,7 @@ public class FinChargeService {
      *
      * @param gridPageRequest {@link GridPageRequest }
      *
-     * @return {@link GridReturnData<FinChargeDTO> }
+     * @return {@link <FinChargeDTO> }
      */
     public IPage<FinChargeDTO> selectPage(GridPageRequest gridPageRequest){
         List<GridFilterInfo> filterList = gridPageRequest.getFilterList();

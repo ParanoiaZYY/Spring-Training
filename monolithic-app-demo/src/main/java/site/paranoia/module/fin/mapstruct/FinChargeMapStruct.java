@@ -1,7 +1,7 @@
-package site.paranoia.controller.mapstruct.fin;
+package site.paranoia.module.fin.mapstruct;
 
-import site.paranoia.domain.fin.FinCharge;
-import site.paranoia.domain.fin.dto.FinChargeDTO;
+import site.paranoia.module.fin.domain.FinCharge;
+import site.paranoia.module.fin.domain.dto.FinChargeDTO;
 import site.paranoia.utils.EntityMapper;
 import org.mapstruct.Mapper;
 

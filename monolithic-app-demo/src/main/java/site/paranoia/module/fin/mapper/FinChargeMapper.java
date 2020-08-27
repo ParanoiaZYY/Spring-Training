@@ -1,12 +1,12 @@
-package site.paranoia.mapper.fin;
+package site.paranoia.module.fin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import site.paranoia.domain.fin.FinCharge;
+import site.paranoia.module.fin.domain.FinCharge;
 
 import java.util.Map;
 
-import site.paranoia.domain.fin.dto.FinChargeDTO;
+import site.paranoia.module.fin.domain.dto.FinChargeDTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
