@@ -41,6 +41,15 @@ spring:
 server:
   port: 8088
 
+application:
+  security:
+    authentication:
+      jwt:
+        secret: 0550224055e1848081dba46d8ad325f503fa141c
+        # Token is valid 24 hours
+        tokenValidityInSeconds: 86400
+        tokenValidityInSecondsForRememberMe: 864000
+
 mybatis-plus:
   global-config:
     db-config:

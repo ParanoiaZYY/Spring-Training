@@ -6,11 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import site.paranoia.config.ApplicationProperties;
 
 @EnableWebMvc
 @SpringBootApplication
 @MapperScan("site.paranoia.module.**.mapper")
-@EnableConfigurationProperties({ LiquibaseProperties.class })
+@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 public class Application {
 
     public static void main(String[] args) {

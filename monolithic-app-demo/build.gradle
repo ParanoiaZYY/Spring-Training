@@ -15,7 +15,7 @@ apply plugin: 'maven'
 
 group = 'com.wisdom'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '14'
 
 repositories {
     mavenLocal()
@@ -43,6 +43,14 @@ dependencies {
     implementation "io.springfox:springfox-swagger2:${springfox_version}"
     implementation "io.springfox:springfox-swagger-ui:${springfox_version}"
     implementation "io.springfox:springfox-spring-webflux:${springfox_version}"
+
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+    implementation "io.projectreactor:reactor-core:3.4.0-M2"
+    testImplementation "io.projectreactor:reactor-test:3.4.0-M2"
 
     // mybatis
     implementation group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.0'

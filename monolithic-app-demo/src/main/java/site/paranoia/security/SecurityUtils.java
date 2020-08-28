@@ -1,5 +1,13 @@
 package site.paranoia.security;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.userdetails.UserDetails;
+import reactor.core.publisher.Mono;
+
+
 /**
  * Utility class for Spring Security.
  */
@@ -8,21 +16,73 @@ public final class SecurityUtils {
     private SecurityUtils() {
     }
 
-    /***
-     * 通过token获得当前的userId
-     * @return
+    /**
+     * Get the login of the current user.
+     *
+     * @return the login of the current user.
      */
-    public static Integer getCurrentUserId() {
-        Integer userId = 1;
-        return userId;
+    public static Mono<String> getCurrentUserLogin() {
+        return ReactiveSecurityContextHolder.getContext()
+            .map(SecurityContext::getAuthentication)
+            .flatMap(authentication -> Mono.justOrEmpty(extractPrincipal(authentication)));
+    }
+
+    private static String extractPrincipal(Authentication authentication) {
+        if (authentication == null) {
+            return null;
+        } else if (authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails springSecurityUser = (UserDetails) authentication.getPrincipal();
+            return springSecurityUser.getUsername();
+        } else if (authentication.getPrincipal() instanceof String) {
+            return (String) authentication.getPrincipal();
+        }
+        return null;
+    }
+
+
+    /**
+     * Get the JWT of the current user.
+     *
+     * @return the JWT of the current user.
+     */
+    public static Mono<String> getCurrentUserJWT() {
+        return ReactiveSecurityContextHolder.getContext()
+            .map(SecurityContext::getAuthentication)
+            .filter(authentication -> authentication.getCredentials() instanceof String)
+            .map(authentication -> (String) authentication.getCredentials());
     }
 
     /**
-     * 获取当前登录公司companyId
+     * Check if a user is authenticated.
      *
+     * @return true if the user is authenticated, false otherwise.
      */
-    public static Integer getCurrentCompanyId(){
-        Integer companyId = 1;
-        return companyId;
+    public static Mono<Boolean> isAuthenticated() {
+        return ReactiveSecurityContextHolder.getContext()
+            .map(SecurityContext::getAuthentication)
+            .map(Authentication::getAuthorities)
+            .map(authorities -> authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .noneMatch(AuthoritiesConstants.ANONYMOUS::equals)
+            );
     }
+
+    /**
+     * If the current user has a specific authority (security role).
+     * <p>
+     * The name of this method comes from the {@code isUserInRole()} method in the Servlet API.
+     *
+     * @param authority the authority to check.
+     * @return true if the current user has the authority, false otherwise.
+     */
+    public static Mono<Boolean> isCurrentUserInRole(String authority) {
+        return ReactiveSecurityContextHolder.getContext()
+            .map(SecurityContext::getAuthentication)
+            .map(Authentication::getAuthorities)
+            .map(authorities -> authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .anyMatch(authority::equals)
+            );
+    }
+
 }
