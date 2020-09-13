@@ -36,7 +36,7 @@ public class DomainUserDetailsService implements ReactiveUserDetailsService {
         log.debug("Authenticating {}", login);
 
         if (new EmailValidator().isValid(login, null)) {
-            return userRepository.findOneWithAuthoritiesByEmailIgnoreCase(login)
+            return sUserMapper.findOneWithAuthoritiesByEmailIgnoreCase(login)
                 .switchIfEmpty(Mono.error(new UsernameNotFoundException("User with email " + login + " was not found in the database")))
                 .map(user -> createSpringSecurityUser(login, user));
         }
