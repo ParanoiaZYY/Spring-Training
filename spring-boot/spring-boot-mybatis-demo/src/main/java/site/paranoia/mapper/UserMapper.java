@@ -1,8 +1,8 @@
 package site.paranoia.mapper;
 
-import site.paranoia.domain.User;
-import site.paranoia.utils.MyMapper;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface UserMapper extends MyMapper<User> {
+@Mapper
+public interface UserMapper {
 
 }

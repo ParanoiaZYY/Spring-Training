@@ -43,16 +43,4 @@ mybatis:
   type-aliases-package: site.paranoia.domain
   mapper-locations: classpath:mapper/*.xml
 
-mapper:
-  mappers:
-    - site.paranoia.utils.MyMapper
-  not-empty: false
-  identity: MYSQL
-
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
-
 
