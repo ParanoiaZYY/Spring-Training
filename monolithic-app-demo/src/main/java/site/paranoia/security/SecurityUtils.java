@@ -85,4 +85,18 @@ public final class SecurityUtils {
             );
     }
 
+    public static Integer getCurrentUserId() {
+        Integer userId = 1;
+        return userId;
+    }
+
+    /**
+     * 获取当前登录公司companyId
+     *
+     */
+    public static Integer getCurrentCompanyId(){
+        Integer companyId = 1;
+        return companyId;
+    }
+
 }

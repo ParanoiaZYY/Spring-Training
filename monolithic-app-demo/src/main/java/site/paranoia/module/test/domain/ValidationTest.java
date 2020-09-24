@@ -15,7 +15,6 @@ public class ValidationTest {
     @Size(min = 1, max = 50)
     private String name;
 
-    @Min()
     private Integer age;
 
     @NotEmpty(message = "data 不能为空！")
