@@ -1,6 +1,7 @@
 package site.paranoia;
 
 import org.junit.Test;
+import org.springframework.util.NumberUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import site.paranoia.module.fin.domain.FinCharge;
@@ -116,5 +117,31 @@ public class OptionalTest {
         String type = null;
         Optional.ofNullable(type)
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Test
+    public void testOptional8() throws Throwable {
+        String type = null;
+        Optional.ofNullable(type)
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+
+    @Test
+    public void testOptional9() throws Throwable {
+        String type = null;
+        Optional.ofNullable(type)
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Test
+    public void testOptional10() throws Throwable {
+        Depart depart = getDepart();
+
+        Optional.ofNullable(depart)
+                .map(Depart::getPeople)
+                .map(People::getName)
+                .filter("A001"::equals)
+                .orElseThrow(() -> new BusinessException("人员不合法"));
     }
 }

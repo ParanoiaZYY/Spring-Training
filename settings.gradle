@@ -1,0 +1,2 @@
+rootProject.name = 'Spring-Training'
+include "spring-boot:spring-boot-datasource-demo"
