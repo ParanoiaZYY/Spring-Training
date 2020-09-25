@@ -3,6 +3,7 @@ plugins {
 }
 
 group 'site.paranoia'
+version '1.0-SNAPSHOT'
 
 allprojects {
     group 'site.paranoia'

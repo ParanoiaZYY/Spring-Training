@@ -1,2 +1,5 @@
 rootProject.name = 'Spring-Training'
+include "monolithic-app-demo"
 include "spring-boot:spring-boot-datasource-demo"
+include "spring-boot:spring-boot-hibernate-validator-demo"
+include "spring-boot:spring-boot-liquibase-demo"
