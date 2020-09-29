@@ -1,0 +1,63 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+
+spring:
+  datasource:
+    druid:
+      name: default
+      url: jdbc:mysql://${mysql.host}:${mysql.port}/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      username: root
+      password: root
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+      aop-patterns: site.paranoia.module.fin.service.*.*
+server:
+  port: 8088
+
+application:
+  security:
+    authentication:
+      jwt:
+        secret: 0550224055e1848081dba46d8ad325f503fa141c
+        # Token is valid 24 hours
+        tokenValidityInSeconds: 86400
+        tokenValidityInSecondsForRememberMe: 864000
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delete_flag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+liquibase:
+  contexts: dev
+  enabled: false
+
+
