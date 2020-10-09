@@ -1,10 +1,9 @@
 rootProject.name = 'Spring-Training'
-include "single-app"
-include "spring-boot:spring-boot-datasource-demo"
+//include "single-app"
+//include "spring-boot:spring-boot-datasource-demo"
 
-
-include "spring-cloud-nacos-dubbo-seata:sample-business"
-include "spring-cloud-nacos-dubbo-seata:sample-charge"
-include "spring-cloud-nacos-dubbo-seata:sample-order"
-include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
-
+// Spring Cloud Alibaba
+include 'spring-cloud-alibaba:nacos-config-demo'
+include 'spring-cloud-alibaba:dubbo-api'
+include 'spring-cloud-alibaba:nacos-dubbo-provider-demo'
+include 'spring-cloud-alibaba:nacos-dubbo-consumer-demo'

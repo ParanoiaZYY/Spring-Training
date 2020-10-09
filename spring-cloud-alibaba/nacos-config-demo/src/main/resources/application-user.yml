@@ -1,0 +1,22 @@
+server:
+  port: 5003
+
+spring:
+  application:
+    name: nacos-config-demo
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: dubbo_consumer_route
+          uri: lb://nacos-dubbo-consumer-demo
+          predicates:
+            - Method= GET
+
