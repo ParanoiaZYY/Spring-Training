@@ -1,0 +1,37 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+
+server:
+  port: 3002
+
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          url: jdbc:mysql://${mysql.host}:${mysql.port}/seata?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+          username: root
+          password: root
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: sample-charge
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  main:
+    allow-bean-definition-overriding: true
+
+dubbo:
+  application:
+    name: sample-charge
+  scan:
+    base-packages: site.paranoia.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://127.0.0.1:8848
+

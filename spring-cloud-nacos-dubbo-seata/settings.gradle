@@ -1,0 +1,6 @@
+rootProject.name = 'spring-cloud-nacos-dubbo-seata'
+
+include "sample-charge"
+include "sample-order"
+include 'dubbo-api'
+

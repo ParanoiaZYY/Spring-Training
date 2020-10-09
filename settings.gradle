@@ -2,3 +2,9 @@ rootProject.name = 'Spring-Training'
 include "single-app"
 include "spring-boot:spring-boot-datasource-demo"
 
+
+include "spring-cloud-nacos-dubbo-seata:sample-business"
+include "spring-cloud-nacos-dubbo-seata:sample-charge"
+include "spring-cloud-nacos-dubbo-seata:sample-order"
+include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
+
