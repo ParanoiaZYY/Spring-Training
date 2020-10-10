@@ -3,7 +3,7 @@ mysql:
   port: 3306
 
 server:
-  port: 3003
+  port: 3004
 
 spring:
   datasource:

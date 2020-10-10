@@ -6,31 +6,31 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import site.paranoia.order.OrderApplication;
-import site.paranoia.order.domain.TOrder;
-import site.paranoia.order.mapper.OrderMapper;
+import site.paranoia.storage.StorageApplication;
+import site.paranoia.storage.domain.Storage;
+import site.paranoia.storage.mapper.StoprageMapper;
 
 import java.util.List;
 import java.util.UUID;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = OrderApplication.class)
+@SpringBootTest(classes = StorageApplication.class)
 public class SimpleTest {
 
     @Autowired
-    OrderMapper orderMapper;
+    StoprageMapper stoprageMapper;
 
     @Test
     public void insertOrder() {
-        Order order = new Order();
-        order.setOrderNo(UUID.randomUUID().toString());
-        orderMapper.insert(order);
+        Storage storage = new Storage();
+        storage.setOrderNo(UUID.randomUUID().toString());
+        stoprageMapper.insert(storage);
     }
 
     @Test
     public void testSelect() {
-        List<Order> orderList = orderMapper.selectList(new QueryWrapper<>());
-        orderList.forEach(System.out::println);
+        List<Storage> storageList = stoprageMapper.selectList(new QueryWrapper<>());
+        storageList.forEach(System.out::println);
     }
 }

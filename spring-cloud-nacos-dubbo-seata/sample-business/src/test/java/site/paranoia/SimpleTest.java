@@ -1,27 +1,35 @@
 package site.paranoia;
 
-import org.junit.Assert;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import site.paranoia.domain.User;
-import site.paranoia.mapper.UserMapper;
+import site.paranoia.business.BusinessApplication;
+import site.paranoia.order.domain.Business;
+import site.paranoia.order.mapper.BusinessMapper;
 
 import java.util.List;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = BusinessApplication.class)
 public class SimpleTest {
 
     @Autowired
-    UserMapper userMapper;
+    BusinessMapper businessMapper;
+
+    @Test
+    public void testInsert() {
+        Business business = new Business();
+        business.setBusinessName("AAAA");
+        businessMapper.insert(business);
+    }
 
     @Test
     public void testSelect() {
-        List<User> userList = userMapper.selectUserList();
+        List<Business> userList = businessMapper.selectList(new QueryWrapper<>());
         userList.forEach(System.out::println);
     }
 }

@@ -6,9 +6,14 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
-group = 'site.paranoia'
+group = 'site.paranoia.storage'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '14'
+
+repositories {
+    mavenLocal()
+    maven { url = uri('http://maven.aliyun.com/nexus/content/groups/public/') }
+}
 
 ext {
     set('springCloudAlibabaVersion', "2.2.3.RELEASE")
@@ -22,18 +27,23 @@ dependencyManagement {
     }
 }
 
-repositories {
-    mavenLocal()
-    maven { url = uri('http://maven.aliyun.com/nexus/content/groups/public/') }
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.17'
+    runtimeOnly 'mysql:mysql-connector-java'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    compile 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+    compile 'com.baomidou:dynamic-datasource-spring-boot-starter:3.1.1'
+
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
     implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-seata'
+
+    compile project(':dubbo-api')
 }
 
