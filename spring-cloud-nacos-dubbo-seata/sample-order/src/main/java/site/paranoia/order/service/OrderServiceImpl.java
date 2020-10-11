@@ -20,7 +20,7 @@ public class OrderServiceImpl {
 
     @GlobalTransactional
     @Transactional(rollbackFor = Exception.class)
-    public void insertOrder() {
+    public void insertOrder() throws Exception {
 
         accountService.insertAccount();
 
@@ -30,5 +30,6 @@ public class OrderServiceImpl {
         order.setCommodityCode("0001");
         order.setCount(1);
         orderMapper.insert(order);
+        throw new Exception();
     }
 }

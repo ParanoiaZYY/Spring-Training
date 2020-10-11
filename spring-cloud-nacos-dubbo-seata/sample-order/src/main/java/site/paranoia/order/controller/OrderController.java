@@ -1,4 +1,4 @@
-package site.paranoia.order;
+package site.paranoia.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ public class OrderController {
     OrderServiceImpl orderService;
 
     @GetMapping
-    public void addOrder() {
+    public void addOrder() throws Exception {
         orderService.insertOrder();
     }
 }

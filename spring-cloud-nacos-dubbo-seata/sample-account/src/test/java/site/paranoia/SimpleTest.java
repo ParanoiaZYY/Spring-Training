@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import site.paranoia.account.AccountApplication;
-import site.paranoia.order.domain.Charge;
-import site.paranoia.order.mapper.ChargeMapper;
+import site.paranoia.account.domain.Account;
+import site.paranoia.account.mapper.AccountMapper;
 
 import java.util.List;
 
@@ -18,11 +18,11 @@ import java.util.List;
 public class SimpleTest {
 
     @Autowired
-    ChargeMapper chargeMapper;
+    AccountMapper accountMapper;
 
     @Test
     public void testSelect() {
-        List<Charge> chargeList = chargeMapper.selectList(new QueryWrapper<>());
+        List<Account> chargeList = accountMapper.selectList(new QueryWrapper<>());
         chargeList.forEach(System.out::println);
     }
 }
