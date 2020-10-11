@@ -1,6 +1,9 @@
 mysql:
-  host: 127.0.0.1
-  port: 3306
+  host: 192.168.102.136
+  port: 32768
+
+nacos:
+  address: 192.168.102.138:8848
 
 server:
   port: 3001
@@ -17,23 +20,23 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: ${nacos.address}
     alibaba:
       seata:
-        tx-service-group: account-service-group
+        tx-service-group: ${spring.application.name}-group
   main:
     allow-bean-definition-overriding: true
 
 dubbo:
   application:
-    name: account-service
+    name: ${spring.application.name}
   scan:
     base-packages: site.paranoia.account.service
   protocol:
     name: dubbo
     port: -1
   registry:
-    address: nacos://127.0.0.1:8848
+    address: nacos://${nacos.address}
 
 seata:
   enabled: true
@@ -44,7 +47,7 @@ seata:
     type: nacos
     nacos:
       namespace:
-      serverAddr: 127.0.0.1:8848
+      serverAddr: ${nacos.address}
       group: SEATA_GROUP
       userName: "nacos"
       password: "nacos"
@@ -52,7 +55,7 @@ seata:
     type: nacos
     nacos:
       application: seata-server
-      server-addr: 127.0.0.1:8848
+      server-addr: ${nacos.address}
       namespace:
       userName: "nacos"
       password: "nacos"

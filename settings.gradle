@@ -7,3 +7,11 @@ include 'spring-cloud-alibaba:nacos-config-demo'
 include 'spring-cloud-alibaba:dubbo-api'
 include 'spring-cloud-alibaba:nacos-dubbo-provider-demo'
 include 'spring-cloud-alibaba:nacos-dubbo-consumer-demo'
+
+
+// spring-cloud-nacos-dubbo-seata
+include "spring-cloud-nacos-dubbo-seata:sample-business"
+include "spring-cloud-nacos-dubbo-seata:sample-account"
+include "spring-cloud-nacos-dubbo-seata:sample-storage"
+include "spring-cloud-nacos-dubbo-seata:sample-order"
+include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
