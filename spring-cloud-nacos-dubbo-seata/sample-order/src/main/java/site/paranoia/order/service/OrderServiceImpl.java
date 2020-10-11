@@ -1,18 +1,34 @@
 package site.paranoia.order.service;
 
-import org.apache.dubbo.config.annotation.DubboService;
+import io.seata.spring.annotation.GlobalTransactional;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
-import site.paranoia.api.OrderService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import site.paranoia.api.AccountService;
+import site.paranoia.order.domain.Order;
 import site.paranoia.order.mapper.OrderMapper;
 
-@DubboService
-public class OrderServiceImpl implements OrderService {
+@Service
+public class OrderServiceImpl {
 
     @Autowired
     OrderMapper orderMapper;
 
-    @Override
-    public int insertOrder() {
-        return 0;
+    @DubboReference
+    AccountService accountService;
+
+    @GlobalTransactional
+    @Transactional(rollbackFor = Exception.class)
+    public void insertOrder() {
+
+        accountService.insertAccount();
+
+        Order order = new Order();
+        order.setAmount(1d);
+        order.setOrderNo("A001");
+        order.setCommodityCode("0001");
+        order.setCount(1);
+        orderMapper.insert(order);
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
-@MapperScan("site.paranoia.mapper")
+@MapperScan("site.paranoia.order.mapper")
 public class OrderApplication {
 
     public static void main(String[] args) {

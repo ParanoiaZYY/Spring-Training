@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @TableName("t_order")
-public class TOrder {
+public class Order {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

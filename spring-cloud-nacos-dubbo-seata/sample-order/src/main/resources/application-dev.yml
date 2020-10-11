@@ -38,6 +38,8 @@ dubbo:
     port: -1
   registry:
     address: nacos://${nacos.address}
+  cloud:
+    subscribed-services: account-service
 
 seata:
   enabled: true

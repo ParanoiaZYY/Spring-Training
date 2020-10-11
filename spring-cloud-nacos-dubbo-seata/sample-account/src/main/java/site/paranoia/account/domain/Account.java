@@ -13,7 +13,7 @@ import lombok.Data;
  * @since 2019-01-13
  */
 @Data
-public class TAccount {
+public class Account {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

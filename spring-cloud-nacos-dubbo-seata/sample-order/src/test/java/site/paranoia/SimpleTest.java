@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import site.paranoia.order.OrderApplication;
-import site.paranoia.order.domain.TOrder;
+import site.paranoia.order.domain.Order;
 import site.paranoia.order.mapper.OrderMapper;
 
 import java.util.List;

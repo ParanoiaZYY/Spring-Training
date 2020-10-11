@@ -80,14 +80,4 @@ public class SeataAutoConfig {
         factoryBean.setTransactionFactory(new JdbcTransactionFactory());
         return factoryBean.getObject();
     }
-
-    /**
-     * init global transaction scanner
-     *
-     * @Return: GlobalTransactionScanner
-     */
-    @Bean
-    public GlobalTransactionScanner globalTransactionScanner(){
-        return new GlobalTransactionScanner("order-gts-seata-example", "my_test_tx_group");
-    }
 }
