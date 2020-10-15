@@ -17,7 +17,7 @@ import lombok.Data;
 @TableName("t_account")
 public class Account {
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Integer id;
     private String userId;
     private Double amount;

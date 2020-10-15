@@ -17,4 +17,9 @@ public class OrderController {
     public void addOrder() throws Exception {
         orderService.insertOrder();
     }
+
+    @GetMapping(value = "/a")
+    public void addOrderA() throws Exception {
+        orderService.insertOrderA();
+    }
 }

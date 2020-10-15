@@ -14,15 +14,35 @@ server:
 spring:
   datasource:
     dynamic:
+      druid:
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        connectionErrorRetryAttempts: 0
+        breakAfterAcquireFailure: true
       datasource:
         master:
           url: jdbc:mysql://${mysql.host}:${mysql.port}/seata?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
           username: root
           password: root
           driver-class-name: com.mysql.cj.jdbc.Driver
-      primary: master
+        fin:
+          url: jdbc:sqlserver://192.168.100.101:1433;databasename=cmlfincen
+          username: cmlfin
+          password: fincen@cmlog
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      primary: fin
       seata: true
-      seata-mode: at
+      seata-mode: AT
   application:
     name: account-service
   cloud:

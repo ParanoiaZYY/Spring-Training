@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.paranoia.api.AccountService;
-import site.paranoia.order.domain.Order;
 import site.paranoia.order.mapper.OrderMapper;
 
 @Service
@@ -24,12 +23,13 @@ public class OrderServiceImpl {
 
         accountService.insertAccount();
 
-        Order order = new Order();
-        order.setAmount(1d);
-        order.setOrderNo("A001");
-        order.setCommodityCode("0001");
-        order.setCount(1);
-        orderMapper.insert(order);
-        throw new Exception();
+        var order = orderMapper.selectById(6);
+        order.setAmount(order.getAmount() + 1);
+        orderMapper.updateById(order);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void insertOrderA() throws Exception {
+        accountService.insertAccount();
     }
 }
