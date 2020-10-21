@@ -1,5 +1,6 @@
 package site.paranoia.order.service;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ public class OrderServiceImpl {
     @DubboReference
     AccountService accountService;
 
-    @GlobalTransactional
     @Transactional(rollbackFor = Exception.class)
     public void insertOrder() throws Exception {
 

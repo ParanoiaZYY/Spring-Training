@@ -107,7 +107,9 @@ dubbo:
     name: dubbo
     port: -1
   registry:
-    address: nacos://${nacos.server-address}:${nacos.port}/?username=${nacos.username}&password=${nacos.password}
+    address: nacos://${nacos.server-address}:${nacos.port}/?username=${nacos.username}&password=${nacos.password}&subscribe=false
+  cloud:
+    subscribed-services:
 
 seata:
   enabled: true

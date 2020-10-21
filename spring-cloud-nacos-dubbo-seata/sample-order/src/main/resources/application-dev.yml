@@ -47,7 +47,7 @@ spring:
             wall:
               config:
                 multi-statement-allow: true
-          aop-patterns: site.paranoia.account.service.*.*
+          aop-patterns: site.paranoia.order.service.*.*
         fin:
           url: jdbc:sqlserver://192.168.100.101:1433;databasename=cmlfincen
           username: cmlfin
