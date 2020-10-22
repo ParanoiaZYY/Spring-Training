@@ -22,8 +22,10 @@ public class AccountServiceImpl implements AccountService {
                 .eq(Account::getUserId, 1)
                 .eq(Account::getId, 9);
         var account = accountMapper.selectOne(query);
-        account.setAmount(account.getAmount() + 1);
-        accountMapper.update(account, query);
+
+        var accountUpdate = new Account();
+        accountUpdate.setAmount(account.getAmount() + 1);
+        accountMapper.update(accountUpdate, query);
         return 0;
     }
 }

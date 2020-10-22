@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.OrderUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.paranoia.api.AccountService;
@@ -29,8 +30,14 @@ public class OrderServiceImpl {
         var query = new LambdaQueryWrapper<Order>()
                 .eq(Order::getId, 6).eq(Order::getUserId, 1);
         var order = orderMapper.selectOne(query);
-        order.setAmount(order.getAmount() + 1);
-        orderMapper.update(order, query);
+
+        var orderUpdate = new Order();
+        orderUpdate.setAmount(order.getAmount() + 1);
+        var num = orderMapper.update(orderUpdate, query);
+
+        if (num == 1) {
+            throw new RuntimeException();
+        }
     }
 
     @Transactional(rollbackFor = Exception.class)

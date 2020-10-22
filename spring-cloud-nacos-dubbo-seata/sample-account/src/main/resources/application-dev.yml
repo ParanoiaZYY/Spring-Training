@@ -139,3 +139,7 @@ seata:
       namespace:
       userName: ${nacos.username}
       password: ${nacos.password}
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
