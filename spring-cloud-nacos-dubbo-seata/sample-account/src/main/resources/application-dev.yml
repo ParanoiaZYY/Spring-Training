@@ -8,6 +8,13 @@ nacos:
   username: nacos
   password: nacos
 
+sqlserver:
+  host: 10.211.55.5
+  port: 1433
+  db: mydb
+  user: sa
+  password: wqd@1994
+
 server:
   port: 3001
 

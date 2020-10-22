@@ -10,8 +10,11 @@ include 'spring-cloud-alibaba:nacos-config-demo'
 
 
 // spring-cloud-nacos-dubbo-seata
-//include "spring-cloud-nacos-dubbo-seata:sample-business"
 include "spring-cloud-nacos-dubbo-seata:sample-account"
-//include "spring-cloud-nacos-dubbo-seata:sample-storage"
 include "spring-cloud-nacos-dubbo-seata:sample-order"
 include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
+//
+// spring-cloud-nacos-dubbo-seata-tcc
+//include "spring-cloud-nacos-dubbo-seata-tcc:sample-account"
+//include "spring-cloud-nacos-dubbo-seata-tcc:sample-order"
+//include 'spring-cloud-nacos-dubbo-seata-tcc:dubbo-api'

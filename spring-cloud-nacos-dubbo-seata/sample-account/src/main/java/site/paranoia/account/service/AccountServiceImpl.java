@@ -1,5 +1,6 @@
 package site.paranoia.account.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,9 +18,12 @@ public class AccountServiceImpl implements AccountService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
     @Override
     public int insertAccount() {
-        var account = accountMapper.selectById(9);
+        var query = new LambdaQueryWrapper<Account>()
+                .eq(Account::getUserId, 1)
+                .eq(Account::getId, 9);
+        var account = accountMapper.selectOne(query);
         account.setAmount(account.getAmount() + 1);
-        accountMapper.updateById(account);
+        accountMapper.update(account, query);
         return 0;
     }
 }
