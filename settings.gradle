@@ -15,6 +15,11 @@ include 'spring-cloud-alibaba:nacos-config-demo'
 //include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
 //
 // spring-cloud-nacos-dubbo-seata-tcc
-include "spring-cloud-nacos-dubbo-seata-tcc:sample-account"
-include "spring-cloud-nacos-dubbo-seata-tcc:sample-order"
-include 'spring-cloud-nacos-dubbo-seata-tcc:dubbo-api'
+//include "spring-cloud-nacos-dubbo-seata-tcc:sample-account"
+//include "spring-cloud-nacos-dubbo-seata-tcc:sample-order"
+//include 'spring-cloud-nacos-dubbo-seata-tcc:dubbo-api'
+
+// spring-cloud-rabbitmq
+include "spring-cloud-rabbitmq:sample-account"
+include "spring-cloud-rabbitmq:sample-order"
+include 'spring-cloud-rabbitmq:dubbo-api'
