@@ -8,6 +8,12 @@ nacos:
   username: nacos
   password: nacos
 
+rabbit:
+  server-address: 192.168.102.138
+  port: 5673
+  username: admin
+  password: 123456
+
 server:
   port: 3003
 
@@ -92,6 +98,18 @@ spring:
         server-addr: ${nacos.server-address}:${nacos.port}
   main:
     allow-bean-definition-overriding: true
+  rabbitmq:
+    host: ${rabbit.server-address}
+    port: ${rabbit.port}
+    username: ${rabbit.username}
+    password: ${rabbit.password}
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
 
 dubbo:
   application:
