@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import site.paranoia.account.domain.Account;
 import site.paranoia.account.mapper.AccountMapper;
 import site.paranoia.api.AccountService;
+import site.paranoia.domain.AccountDTO;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -17,16 +18,20 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int insertAccount() {
-        var query = new LambdaQueryWrapper<Account>()
-                .eq(Account::getUserId, 1)
-                .eq(Account::getId, 9);
-        var account = accountMapper.selectOne(query);
-        account.setAmount(account.getAmount() + 1);
-        int num = accountMapper.update(account, query);
+    public int insertAccount(AccountDTO account) {
+        Account accountInsert = new Account();
+        accountInsert.setUserId(account.getUserId());
+        accountInsert.setAmount(account.getAmount());
+        int num = accountMapper.insert(accountInsert);
         if (num != 1) {
             throw new RuntimeException();
         }
-        return 0;
+        return num;
+    }
+
+    @Override
+    public int deleteAccount(int id) {
+        var num = accountMapper.deleteById(id);
+        return num;
     }
 }

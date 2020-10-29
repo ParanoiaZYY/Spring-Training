@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import site.paranoia.action.TccActionOne;
 import site.paranoia.action.TccActionTwo;
+import site.paranoia.domain.AccountDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,10 @@ public class TccTransactionService {
     @GlobalTransactional
     public String doTransactionCommit(){
         //第一个TCC 事务参与者
-        boolean result = tccActionOne.prepare(null, 1);
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setAmount((double) 1);
+        accountDTO.setUserId("1");
+        boolean result = tccActionOne.prepare(null, accountDTO);
         if(!result){
             throw new RuntimeException("TccActionOne failed.");
         }
@@ -57,7 +61,10 @@ public class TccTransactionService {
     @GlobalTransactional
     public String doTransactionRollback(Map map){
         //第一个TCC 事务参与者
-        boolean result = tccActionOne.prepare(null, 1);
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setAmount((double) 1);
+        accountDTO.setUserId("1");
+        boolean result = tccActionOne.prepare(null, accountDTO);
         if(!result){
             throw new RuntimeException("TccActionOne failed.");
         }

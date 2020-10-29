@@ -83,9 +83,7 @@ spring:
               config:
                 multi-statement-allow: true
           aop-patterns: site.paranoia.order.service.*.*
-      primary: fin
-      seata: true
-      seata-mode: AT
+      primary: master
   application:
     name: order-service
   cloud:

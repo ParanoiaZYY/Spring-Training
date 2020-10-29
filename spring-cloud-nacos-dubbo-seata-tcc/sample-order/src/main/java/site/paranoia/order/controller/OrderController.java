@@ -5,16 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import site.paranoia.order.service.OrderServiceImpl;
+import site.paranoia.order.service.TccTransactionService;
 
 @RestController
 @RequestMapping(value = "/order")
 public class OrderController {
 
     @Autowired
-    OrderServiceImpl orderService;
+    TccTransactionService tccTransactionService;
 
     @GetMapping
     public void addOrder() throws Exception {
-        orderService.insertOrder();
+        tccTransactionService.doTransactionCommit();
     }
 }

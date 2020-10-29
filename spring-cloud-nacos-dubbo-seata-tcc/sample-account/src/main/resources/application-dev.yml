@@ -83,7 +83,7 @@ spring:
               config:
                 multi-statement-allow: true
           aop-patterns: site.paranoia.account.service.*.*
-      primary: fin
+      primary: master
   application:
     name: account-service
   cloud:

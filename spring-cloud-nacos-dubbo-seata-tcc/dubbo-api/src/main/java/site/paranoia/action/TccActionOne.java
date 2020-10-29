@@ -4,6 +4,7 @@ import io.seata.rm.tcc.api.BusinessActionContext;
 import io.seata.rm.tcc.api.BusinessActionContextParameter;
 import io.seata.rm.tcc.api.LocalTCC;
 import io.seata.rm.tcc.api.TwoPhaseBusinessAction;
+import site.paranoia.domain.AccountDTO;
 
 @LocalTCC
 public interface TccActionOne {
@@ -16,7 +17,7 @@ public interface TccActionOne {
      */
     @TwoPhaseBusinessAction(name = "ActionOne" , commitMethod = "commit", rollbackMethod = "rollback")
     public boolean prepare(BusinessActionContext actionContext,
-                           @BusinessActionContextParameter(paramName = "a") int a);
+                           @BusinessActionContextParameter(paramName = "accountDTO") AccountDTO accountDTO);
 
     /**
      * Commit boolean.

@@ -1,6 +1,5 @@
 package site.paranoia.order.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,14 +16,19 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public int insertOrder() {
-        var query = new LambdaQueryWrapper<Order>()
-                .eq(Order::getId, 6).eq(Order::getUserId, 1);
-        var order = orderMapper.selectOne(query);
-        order.setAmount(order.getAmount() + 1);
-        var num = orderMapper.update(order, query);
+        var order = new Order();
+        order.setUserId("1");
+        order.setAmount((double) 1);
+        var num = orderMapper.insert(order);
         if (num == 1) {
             throw new RuntimeException();
         }
+        return num;
+    }
+
+    @Override
+    public int deleteOrder(Integer id) {
+        var num = orderMapper.deleteById(id);
         return num;
     }
 }
