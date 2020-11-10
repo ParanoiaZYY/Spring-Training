@@ -1,6 +1,6 @@
 package site.paranoia.account.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -9,8 +9,10 @@ import site.paranoia.account.domain.Account;
 import site.paranoia.account.mapper.AccountMapper;
 import site.paranoia.api.AccountService;
 
+import java.math.BigDecimal;
+
 @DubboService
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
 
     @Autowired
     AccountMapper accountMapper;
@@ -18,14 +20,15 @@ public class AccountServiceImpl implements AccountService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
     @Override
     public int insertAccount() {
-        var query = new LambdaQueryWrapper<Account>()
-                .eq(Account::getUserId, 1)
-                .eq(Account::getId, 9);
-        var account = accountMapper.selectOne(query);
+        var account = new Account();
+        account.setUserId(1);
+        account.setOrderId("A001");
+        account.setAmount(BigDecimal.ONE);
+        var num = accountMapper.insert(account);
 
-        var accountUpdate = new Account();
-        accountUpdate.setAmount(account.getAmount() + 1);
-        accountMapper.update(accountUpdate, query);
+        if (num != 1) {
+            throw new RuntimeException();
+        }
         return 0;
     }
 }

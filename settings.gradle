@@ -1,6 +1,7 @@
 rootProject.name = 'Spring-Training'
 //include "single-app"
 //include "spring-boot:spring-boot-datasource-demo"
+include "spring-boot:spring-boot-mybatis-plus-demo"
 
 // Spring Cloud Alibaba
 include 'spring-cloud-alibaba:nacos-config-demo'
@@ -10,9 +11,9 @@ include 'spring-cloud-alibaba:nacos-config-demo'
 
 
 // spring-cloud-nacos-dubbo-seata
-//include "spring-cloud-nacos-dubbo-seata:sample-account"
-//include "spring-cloud-nacos-dubbo-seata:sample-order"
-//include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
+include "spring-cloud-nacos-dubbo-seata:sample-account"
+include "spring-cloud-nacos-dubbo-seata:sample-order"
+include 'spring-cloud-nacos-dubbo-seata:dubbo-api'
 //
 // spring-cloud-nacos-dubbo-seata-tcc
 //include "spring-cloud-nacos-dubbo-seata-tcc:sample-account"
@@ -20,6 +21,6 @@ include 'spring-cloud-alibaba:nacos-config-demo'
 //include 'spring-cloud-nacos-dubbo-seata-tcc:dubbo-api'
 
 // spring-cloud-rabbitmq
-include "spring-cloud-rabbitmq:sample-account"
-include "spring-cloud-rabbitmq:sample-order"
-include 'spring-cloud-rabbitmq:dubbo-api'
+//include "spring-cloud-rabbitmq:sample-account"
+//include "spring-cloud-rabbitmq:sample-order"
+//include 'spring-cloud-rabbitmq:dubbo-api'

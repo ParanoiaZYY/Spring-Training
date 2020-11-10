@@ -12,6 +12,8 @@ import site.paranoia.api.AccountService;
 import site.paranoia.order.domain.Order;
 import site.paranoia.order.mapper.OrderMapper;
 
+import java.math.BigDecimal;
+
 @Service
 public class OrderServiceImpl {
 
@@ -27,15 +29,12 @@ public class OrderServiceImpl {
 
         accountService.insertAccount();
 
-        var query = new LambdaQueryWrapper<Order>()
-                .eq(Order::getId, 6).eq(Order::getUserId, 1);
-        var order = orderMapper.selectOne(query);
-
-        var orderUpdate = new Order();
-        orderUpdate.setAmount(order.getAmount() + 1);
-        var num = orderMapper.update(orderUpdate, query);
-
-        if (num == 1) {
+        var order = new Order();
+        order.setUserId("1");
+        order.setOrderNo("A001");
+        order.setAmount(new BigDecimal(1));
+        var num = orderMapper.insert(order);
+        if (num != 1) {
             throw new RuntimeException();
         }
     }

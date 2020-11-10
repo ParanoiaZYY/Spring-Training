@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * <p>
  * 
@@ -22,6 +24,10 @@ public class Account {
     private Integer id;
 
     @TableField(value = "user_id")
-    private String userId;
-    private Double amount;
+    private Integer userId;
+
+    @TableField(value = "order_id")
+    private String orderId;
+
+    private BigDecimal amount;
 }
