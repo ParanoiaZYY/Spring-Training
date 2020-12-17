@@ -1,7 +1,15 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = 'Spring-Training'
-//include "single-app"
+include "single-app"
 //include "spring-boot:spring-boot-datasource-demo"
 include "spring-boot:spring-boot-mybatis-plus-demo"
+include "spring-boot:spring-boot-gradle-docker-demo"
+include "spring-boot:spring-boot-quartz-demo"
 
 // Spring Cloud Alibaba
 include 'spring-cloud-alibaba:nacos-config-demo'

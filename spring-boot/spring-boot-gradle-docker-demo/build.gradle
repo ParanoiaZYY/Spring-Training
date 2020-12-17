@@ -1,0 +1,29 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'java'
+    id 'war'
+    id 'com.google.cloud.tools.jib' version '2.6.0'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'site.paranoia'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility=1.8
+
+apply from: "gradle/docker.gradle"
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.17'
+    compile 'mysql:mysql-connector-java:5.1.38'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    compile 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+    compile group: 'com.baomidou', name: 'dynamic-datasource-spring-boot-starter', version: '3.1.1'
+}
+
